@@ -1,5 +1,8 @@
 package resources;
 
+import models.Galaxia;
+
+import java.util.ArrayList;
 import java.util.Formatter;
 public class TableBuilder {
     Formatter fmt;
@@ -29,7 +32,17 @@ public class TableBuilder {
     }
 
     public void display(String[][] data) {
-        // Jumps a line
+        // Prints data array
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[i].length; j++) {
+                System.out.printf("%-" + colWidths[j] + "s", data[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public void displayHeader() {
+
         System.out.println();
 
         // Print headers
@@ -42,29 +55,25 @@ public class TableBuilder {
 
         // Print a table width line
         this.divisor();
+    }
+    public void displayFooter(String[][] data) {
 
-        // Prints data array
+        // Print a table width line
+        this.divisor();
+
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[i].length; j++) {
                 System.out.printf("%-" + colWidths[j] + "s", data[i][j]);
             }
             System.out.println();
         }
+
         // Print a table width line
         this.divisor();
     }
 
-    public void displayFooter(String[][] data) {
-        for (int i = 0; i < data.length; i++) {
-            for (int j = 0; j < data[i].length; j++) {
-                System.out.printf("%-" + colWidths[j] + "s", data[i][j]);
-            }
-            System.out.println();
-        }
-        this.divisor();
+    public void clearConsole() {
+        System.out.println("\n\n\n\n");
     }
 
-    public void clearConsole() {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    }
 }

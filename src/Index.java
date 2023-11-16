@@ -16,10 +16,8 @@ public class Index {
         while (nextInput != 0) {
             MainMenu menu = new MainMenu();
             nextInput = Reader.getInstance().input.nextInt();
-            //input = sc.nextInt();
             menu.handleInput(nextInput);
         }
-
 
         Db.getInstance().disconnect();
     }

@@ -1,28 +1,24 @@
 package views.menus;
 import controllers.GalaxiaController;
-import models.Galaxia;
-import resources.Db;
-import resources.Reader;
 import resources.TableBuilder;
 
 import java.sql.SQLException;
-import java.sql.Statement;
 
-public class CreateMenu {
+public class DeleteMenu {
 
     private TableBuilder tb;
     private int[] colWidths = {40, 10};
-    private String[] headers = {"O que deseja criar?", "Digite"};
+    private String[] headers = {"O que deseja deletar?", "Digite"};
     private String[][] options = {
-            {"Galaxia", "1"},
-            {"Estrela", "2"},
+            {"Galaxias", "1"},
+            {"Estrelas", "2"},
     };
 
     private String[][] footer = {
             {"Voltar", "0"},
     };
 
-    public CreateMenu() {
+    public DeleteMenu() {
         tb = new TableBuilder(this.colWidths);
         tb.clearConsole();
         tb.setHeaders(headers);
@@ -39,8 +35,8 @@ public class CreateMenu {
         // Galaxia
         if (input == 1) {
             GalaxiaController controller = new GalaxiaController();
-            Galaxia g = controller.getInput();
-            controller.insert(g);
+            SingleInputMenu menuNomeGalaxia = new SingleInputMenu("Qual o nome da galaxia que deseja deletar?");
+            controller.deleteByNome(menuNomeGalaxia.getInput());
         }
         // Estrela
         if (input == 2) {

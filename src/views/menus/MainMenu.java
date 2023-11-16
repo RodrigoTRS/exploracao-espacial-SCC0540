@@ -24,6 +24,7 @@ public class MainMenu{
         tb = new TableBuilder(this.colWidths);
         tb.clearConsole();
         tb.setHeaders(headers);
+        tb.displayHeader();
         tb.display(options);
         tb.displayFooter(footer);
     }
@@ -33,7 +34,9 @@ public class MainMenu{
             System.out.println("Finalizando aplicaçao");
         }
         if (input == 1) {
-            System.out.println("Realizando uma consulta");
+            ReadMenu menu = new ReadMenu();
+            int nextInput = Reader.getInstance().input.nextInt();
+            menu.handleInput(nextInput);
         }
         if (input == 2) {
             CreateMenu menu = new CreateMenu();
@@ -44,7 +47,9 @@ public class MainMenu{
             System.out.println("Alterando uma entidade");
         }
         if (input == 4) {
-            System.out.println("Deletando uma entidade");
+            DeleteMenu menu = new DeleteMenu();
+            int nextInput = Reader.getInstance().input.nextInt();
+            menu.handleInput(nextInput);
         }
     }
 }
