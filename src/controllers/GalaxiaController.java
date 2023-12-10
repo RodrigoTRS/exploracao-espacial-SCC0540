@@ -52,7 +52,7 @@ public class GalaxiaController {
     }
 
     public void selectByTipo(String tipo) throws SQLException {
-        tipo = Normalizer.normalize(tipo, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").toLowerCase();
+        tipo = Normalizer.normalize(tipo, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").toUpperCase();
 
         Statement statement = Db.getInstance().connection.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM " + this.tableName + " WHERE TIPO='"+ tipo +"'");
@@ -60,7 +60,7 @@ public class GalaxiaController {
     }
 
     public void deleteByNome(String nome) throws SQLException {
-        nome = Normalizer.normalize(nome, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").toLowerCase();
+        nome = Normalizer.normalize(nome, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").toUpperCase();
 
         Statement statement = Db.getInstance().connection.createStatement();
         int result = statement.executeUpdate("DELETE FROM " + this.tableName + " WHERE NOME='"+ nome +"'");
